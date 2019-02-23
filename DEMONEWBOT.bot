@@ -1,0 +1,18 @@
+{
+    "name": "DEMONEWBOT",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:6000/api/messages",
+            "id": "91f05510-3732-11e9-97bc-a3121e72c379",
+            "name": "http://localhost:6000/api/messages"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "overrides": null,
+    "path": "C:\\projects\\AZURE\\DEMOSRINIVASAN-src\\DEMONEWBOT.bot"
+}
