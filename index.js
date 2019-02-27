@@ -6,6 +6,10 @@
 // Import required pckages
 const path = require('path');
 const restify = require('restify');
+// Table storage
+var tableName = "rbibot"; // You define
+var storageName = "rbibot"; // Obtain from Azure Portal
+var storageKey = "WVAhUJ5DUa5FVu/wxIxxAO9qqsMe9itCUoJWc98XE9MH1P2s5HGq7ljqajsAVElLhFaHOgg5JOVXnBKwcj7nog=="; // Obtain from Azure Portal
 
 // Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter, MemoryStorage, ConversationState, UserState,TurnContext } = require('botbuilder');
@@ -82,15 +86,15 @@ userState = new UserState(memoryStorage);
 //          to use the Azure Blob storage or Azure Cosmos DB providers.
 
 // Add botbuilder-azure when using any Azure services. 
-// const { BlobStorage } = require('botbuilder-azure');
-// // Get service configuration
-// const blobStorageConfig = botConfig.findServiceByNameOrId(STORAGE_CONFIGURATION_ID);
-// const blobStorage = new BlobStorage({
-//     containerName: (blobStorageConfig.container || DEFAULT_BOT_CONTAINER),
-//     storageAccountOrConnectionString: blobStorageConfig.connectionString,
-// });
-// conversationState = new ConversationState(blobStorage);
-// userState = new UserState(blobStorage);
+const { BlobStorage } = require('botbuilder-azure');
+// Get service configuration
+const blobStorageConfig = botConfig.findServiceByNameOrId(STORAGE_CONFIGURATION_ID);
+const blobStorage = new BlobStorage({
+    containerName: (blobStorageConfig.container || DEFAULT_BOT_CONTAINER),
+    storageAccountOrConnectionString: blobStorageConfig.connectionString,
+});
+conversationState = new ConversationState(blobStorage);
+userState = new UserState(blobStorage);
 
 // Create the main dialog.
 let bot;
