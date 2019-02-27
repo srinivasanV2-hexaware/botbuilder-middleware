@@ -11,6 +11,9 @@ var tableName = "rbibot"; // You define
 var storageName = "rbibot"; // Obtain from Azure Portal
 var storageKey = "WVAhUJ5DUa5FVu/wxIxxAO9qqsMe9itCUoJWc98XE9MH1P2s5HGq7ljqajsAVElLhFaHOgg5JOVXnBKwcj7nog=="; // Obtain from Azure Portal
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').load();
+}
 // Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter, MemoryStorage, ConversationState, UserState,TurnContext } = require('botbuilder');
 // Import required bot configuration.
